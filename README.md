@@ -2,7 +2,7 @@
 
   - Implementation of api method for generate auth token
 
-##Prepare application
+## Prepare application
   Add into `hosts`:
   
     127.0.0.1 kovalenko.test
