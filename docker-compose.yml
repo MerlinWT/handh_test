@@ -1,0 +1,27 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 8081:80
+    volumes:
+      - ./app:/var/www/app
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/app
+  mysql:
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - /docker/mysql/database:/var/lib/mysql
+
